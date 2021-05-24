@@ -1,0 +1,10 @@
+.App {
+  background-color: #282c34;
+  min-height: 200vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.TableContainer {
+  overflow-x: auto;
+}

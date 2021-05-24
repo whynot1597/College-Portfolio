@@ -1,0 +1,33 @@
+{
+  "name": "pawvascript",
+  "version": "1.0.0",
+  "description": "JavaScript with types, less symbols, and more dogs. That's PawvaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --collect-coverage",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawvascript/pawvascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawvascript/pawvascript/issues"
+  },
+  "homepage": "https://github.com/pawvascript/pawvascript#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "js-beautify": "^1.11.0",
+    "ohm-js": "^0.14.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^25.1.0",
+    "prettier": "1.19.1"
+  }
+}

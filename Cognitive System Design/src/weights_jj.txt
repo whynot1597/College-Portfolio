@@ -1,0 +1,1 @@
+{"distanceToFood": 0.29912914506575566, "distanceToGhost": -0.003403230709144141, "willDie": -0.0043960623777812395, "willEatPellet": 0.03658324009524344, "desireForHome": 0.14246054796453803, "invaderDistance": 0.9232614551579662, "willEatInvader": 0.128963664555695, "distanceToFarFood": 0.4096278220066598}

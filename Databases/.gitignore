@@ -1,0 +1,17 @@
+combined_data_*.txt
+movie_titles.csv
+probe.txt
+qualifying.txt
+ratings.csv
+.idea/
+__pycache__/
+env/
+node_modules/
+import.report
+movies.csv
+viewers.csv
+
+
+# BGG Data
+2020-08-19.csv
+bgg-15m-reviews.csv

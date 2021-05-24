@@ -1,0 +1,18 @@
+#sign-in-card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  margin-top: 10%;
+}
+
+#signup-button {
+}
+
+.behindPic {
+  background-image: url("../Images/SynthBackgroundPic.jpg");
+  height: 100%;
+}
+
+body {
+  background-image: url("../Images/SynthBackgroundPic.jpg");
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>ESP Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="topnav">
+      <h1>NeoPixel Lights</h1>
+    </div>
+    <div class="content">
+      <div class="card">
+        <!-- <h2>Output - GPIO 2</h2> -->
+        <p class="state">color: <span id="color">%COLOR%</span></p>
+        <p class="state">state: <span id="power">%POWER%</span></p>
+        <p><button id="power_button" class="button">POWER</button></p>
+        <p><button id="purple_button" class="button">PURPLE</button></p>
+        <p><button id="dark_blue_button" class="button">DARK BLUE</button></p>
+        <p><button id="blue_button" class="button">BLUE</button></p>
+        <p><button id="red_button" class="button">RED</button></p>
+        <p><button id="yellow_button" class="button">YELLOW</button></p>
+        <p><button id="green_button" class="button">GREEN</button></p>
+        <p><button id="white_button" class="button">WHITE</button></p>
+      </div>
+    </div>
+    <script>
+      var gateway = `ws://${window.location.hostname}/ws`;
+      var websocket;
+      window.addEventListener("load", onLoad);
+      function initWebSocket() {
+        console.log("Trying to open a WebSocket connection...");
+        websocket = new WebSocket(gateway);
+        websocket.onopen = onOpen;
+        websocket.onclose = onClose;
+        websocket.onmessage = onMessage; // <-- add this line
+      }
+      function onOpen(event) {
+        console.log("Connection opened");
+      }
+      function onClose(event) {
+        console.log("Connection closed");
+        setTimeout(initWebSocket, 2000);
+      }
+      function onMessage(event) {
+        console.log("EVENT:", event.data);
+        if (event.data === "on") {
+          document.getElementById("power").innerHTML = "On";
+        } else if (event.data === "off") {
+          document.getElementById("power").innerHTML = "Off";
+        } else if (event.data === "purple") {
+          document.getElementById("color").innerHTML = "Purple";
+        } else if (event.data === "dark_blue") {
+          document.getElementById("color").innerHTML = "Dark Blue";
+        } else if (event.data === "blue") {
+          document.getElementById("color").innerHTML = "Blue";
+        } else if (event.data === "red") {
+          document.getElementById("color").innerHTML = "Red";
+        } else if (event.data === "yellow") {
+          document.getElementById("color").innerHTML = "Yellow";
+        } else if (event.data === "green") {
+          document.getElementById("color").innerHTML = "Green";
+        } else if (event.data === "white") {
+          document.getElementById("color").innerHTML = "White";
+        } else {
+          document.getElementById("power").innerHTML = "ERROR: Please reload";
+          document.getElementById("color").innerHTML = "ERROR: Please reload";
+        }
+      }
+      function onLoad(event) {
+        initWebSocket();
+        initButtons();
+      }
+      function initButtons() {
+        document
+          .getElementById("purple_button")
+          .addEventListener("click", toggle_purple);
+        document
+          .getElementById("dark_blue_button")
+          .addEventListener("click", toggle_dark_blue);
+        document
+          .getElementById("blue_button")
+          .addEventListener("click", toggle_blue);
+        document
+          .getElementById("red_button")
+          .addEventListener("click", toggle_red);
+        document
+          .getElementById("yellow_button")
+          .addEventListener("click", toggle_yellow);
+        document
+          .getElementById("green_button")
+          .addEventListener("click", toggle_green);
+        document
+          .getElementById("white_button")
+          .addEventListener("click", toggle_white);
+        document
+          .getElementById("power_button")
+          .addEventListener("click", toggle_power);
+      }
+      function toggle_purple() {
+        // Sends to HWSM
+        websocket.send("purple");
+      }
+      function toggle_dark_blue() {
+        websocket.send("dark_blue");
+      }
+      function toggle_blue() {
+        // Sends to HWSM
+        websocket.send("blue");
+      }
+      function toggle_red() {
+        // Sends to HWSM
+        websocket.send("red");
+      }
+      function toggle_yellow() {
+        // Sends to HWSM
+        websocket.send("yellow");
+      }
+      function toggle_green() {
+        // Sends to HWSM
+        websocket.send("green");
+      }
+      function toggle_white() {
+        // Sends to HWSM
+        websocket.send("white");
+      }
+      function toggle_power() {
+        websocket.send("power");
+      }
+    </script>
+  </body>
+</html>

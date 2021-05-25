@@ -65,7 +65,6 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <div className={classes.background}>
         <Paper className={classes.root}>
-          <div>hello</div>
           <ProfileDrawer classes={classes} />
           <StarredProjects classes={classes} />
         </Paper>

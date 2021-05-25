@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import projectDetails from "./project-details";
 
 function StarredProjects(props) {
   const classes = props.classes;
@@ -21,6 +22,13 @@ function StarredProjects(props) {
         .then((res) => res.json())
         .then((response) => {
           const folders = response.filter((content) => content.type === "dir");
+          folders.forEach((folder) => {
+            const project = projectDetails.filter(
+              (proj) => proj.name === folder.name
+            );
+            folder.description = project[0].description;
+          });
+          console.log(folders);
           setProjects(folders);
           setIsLoaded(true);
         })
@@ -37,6 +45,7 @@ function StarredProjects(props) {
               <ProjectCard
                 name={project.name}
                 url={project["_links"].html}
+                description={project.description}
                 {...props}
               />
             </Grid>

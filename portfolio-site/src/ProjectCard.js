@@ -19,7 +19,7 @@ function ProjectCard(props) {
       <CardActionArea onClick={handleButton}>
         <CardHeader avatar={<FolderIcon />} title={props.name} />
         <Typography className={classes.title} color="textPrimary" gutterBottom>
-          placeholder
+          {props.description}
         </Typography>
       </CardActionArea>
     </Card>

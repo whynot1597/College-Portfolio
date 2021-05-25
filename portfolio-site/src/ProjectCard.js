@@ -1,9 +1,12 @@
 import {
   Card,
   CardActionArea,
+  CardActions,
   CardHeader,
+  IconButton,
   Typography,
 } from "@material-ui/core";
+import { Link } from "@material-ui/icons";
 import FolderIcon from "@material-ui/icons/Folder";
 import React from "react";
 
@@ -15,14 +18,28 @@ function ProjectCard(props) {
   };
 
   return (
-    <Card className={classes.card}>
-      <CardActionArea onClick={handleButton}>
-        <CardHeader avatar={<FolderIcon />} title={props.name} />
-        <Typography className={classes.title} color="textPrimary" gutterBottom>
+    <CardActionArea onClick={handleButton}>
+      <Card className={classes.card}>
+        <CardHeader
+          avatar={<FolderIcon />}
+          title={props.name}
+          titleTypographyProps={{ variant: "h4" }}
+        />
+        <Typography
+          className={classes.cardText}
+          color="textPrimary"
+          gutterBottom
+          variant="body2"
+        >
           {props.description}
         </Typography>
-      </CardActionArea>
-    </Card>
+        <CardActions>
+          <IconButton aria-label="open repo">
+            <Link />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </CardActionArea>
   );
 }
 

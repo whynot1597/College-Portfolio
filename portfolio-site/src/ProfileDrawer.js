@@ -7,6 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
   Drawer,
+  Typography,
 } from "@material-ui/core";
 import ListItemLink from "./ListItemLink";
 
@@ -43,7 +44,7 @@ export default function ProfileDrawer(props) {
   });
 
   return (
-    <div className={classes.root}>
+    <div>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -58,22 +59,28 @@ export default function ProfileDrawer(props) {
           </ListItem>
         </List>
         <ListItem key="name">
-          <h1>{username}</h1>
+          <Typography variant="h3">{username}</Typography>
         </ListItem>
         <ListItem key="bio">
-          <h2>{bio}</h2>
+          <Typography variant="h4">{bio}</Typography>
         </ListItem>
         <ListItem button key="github" href={htmlURL}>
           <ListItemIcon>
             <GitHub />
           </ListItemIcon>
-          <ListItemText primary={"@" + login} />
+          <ListItemText
+            primary={"@" + login}
+            primaryTypographyProps={{ variant: "button" }}
+          />
         </ListItem>
         <ListItem button key="linkedin" href={blog}>
           <ListItemIcon>
             <LinkedIn />
           </ListItemIcon>
-          <ListItemText primary="LinkedIn Profile" />
+          <ListItemText
+            primary="LinkedIn Profile"
+            primaryTypographyProps={{ variant: "button" }}
+          />
         </ListItem>
         <ListItemLink
           button
@@ -83,13 +90,19 @@ export default function ProfileDrawer(props) {
           <ListItemIcon>
             <Description />
           </ListItemIcon>
-          <ListItemText primary="Resume" />
+          <ListItemText
+            primary="Resume"
+            primaryTypographyProps={{ variant: "button" }}
+          />
         </ListItemLink>
         <ListItem key="location">
           <ListItemIcon>
             <LocationOn />
           </ListItemIcon>
-          <ListItemText primary={location} />
+          <ListItemText
+            primary={location}
+            primaryTypographyProps={{ variant: "button" }}
+          />
         </ListItem>
       </Drawer>
     </div>

@@ -1,23 +1,50 @@
 import ProfileDrawer from "./ProfileDrawer";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
 import "./App.css";
 import StarredProjects from "./StarredProjects";
+import { Paper } from "@material-ui/core";
+
+const darkTheme = createMuiTheme({
+  palette: {
+    type: "dark",
+  },
+});
+
+const lightTheme = createMuiTheme({
+  palette: {
+    type: "light",
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    height: "100%",
   },
   card: {
     minWidth: theme.spacing(20),
-    minHeight: theme.spacing(20),
+    maxWidth: theme.spacing(40),
+    color: theme.palette.text.primary,
+    background: theme.palette.background.paper,
+  },
+  cardText: {
+    color: theme.palette.text.primary,
+    padding: theme.spacing(1),
+    textAlign: "left",
+    fontSize: 15,
   },
   drawer: {
-    width: theme.spacing(30),
+    width: theme.spacing(50),
     flexShrink: 0,
   },
   drawerPaper: {
-    width: theme.spacing(30),
+    width: theme.spacing(50),
+    background: theme.palette.action.active,
   },
   logo: {
     width: theme.spacing(20),
@@ -25,10 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
-  title: {
-    fontSize: 20,
+  background: {
+    height: "100vh",
   },
 }));
 
@@ -36,15 +62,15 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div>hello</div>
-      <ProfileDrawer classes={classes} />
-      <StarredProjects classes={classes} />
-      {/* <Header />
-      <StarredProjects />
-      <OtherProjects />
-      <Interests /> */}
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <div className={classes.background}>
+        <Paper className={classes.root}>
+          <div>hello</div>
+          <ProfileDrawer classes={classes} />
+          <StarredProjects classes={classes} />
+        </Paper>
+      </div>
+    </ThemeProvider>
   );
 }
 

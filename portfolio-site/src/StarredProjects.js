@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import projectDetails from "./project-details";
@@ -37,8 +37,11 @@ function StarredProjects(props) {
   });
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={2}>
+    <div>
+      <Grid container spacing={3}>
+        <Grid item key="header" xs={12}>
+          <Typography variant="h4">My Github Repositories</Typography>
+        </Grid>
         {projects.map((project) => {
           return (
             <Grid item key={project.name}>
